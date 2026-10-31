@@ -83,7 +83,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json(
-      { ...mapIpWho(data, address), checkedAt: new Date().toISOString() },
+      { ...mapIpWho(data, address) },
       {
         headers: {
           "cache-control": self
