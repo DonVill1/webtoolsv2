@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#2DD4BF">
+  <path fill-rule="evenodd" d="M256 24a232 232 0 1 0 0 464 232 232 0 0 0 0-464zm0 64a168 168 0 1 1 0 336 168 168 0 0 1 0-336z"/>
+  <rect x="240" y="128" width="32" height="144" rx="16"/>
+  <rect x="240" y="240" width="112" height="32" rx="16" transform="rotate(30 256 256)"/>
+  <path d="M416 352l72 72-72 72-32-32 40-40h-96v-48h96l-40-40z"/>
+</svg>

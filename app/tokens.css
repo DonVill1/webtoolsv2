@@ -1,0 +1,123 @@
+/*
+ * WebTools design tokens.
+ *
+ * The app's identity is defined here, not in the Nexus standard. Nexus is a
+ * headless sizing/fit ladder (type, space, radius, borders, motion); its color
+ * slots are an architecture, not a palette, and never a project skin.
+ *
+ * `--nexus-root` is the scale from packages/nexus-uxui/scale.ts, expressed as
+ * breakpoint steps. A fluid unitless multiplier cannot be derived from a
+ * viewport length in CSS: `calc(1.12 + (100vw - 1024px) * x)` adds a length to
+ * a number and invalidates every token built on it. The steps below keep the
+ * same rhythm with a legibility floor of 1.0 on phones and a 1.1 ceiling on
+ * wide desktops, instead of silently falling back to 16px everywhere.
+ *
+ * Colors are WebTools' own: v1's Prussian/Oxford navy, slate cards and the
+ * 2DD4BF teal that carried the wordmark.
+ */
+
+:root {
+  --nexus-root: 1;
+
+  /* type ramp: 16px base x weight x scale */
+  --nexus-type-xs: calc(16px * 0.75 * var(--nexus-root));
+  --nexus-type-sm: calc(16px * 0.88 * var(--nexus-root));
+  --nexus-type-md: calc(16px * 1 * var(--nexus-root));
+  --nexus-type-lg: calc(16px * 1.25 * var(--nexus-root));
+  --nexus-type-xl: calc(16px * 1.6 * var(--nexus-root));
+
+  /* space ramp: 4px base x weight x scale */
+  --nexus-space-1: calc(4px * 0.5 * var(--nexus-root));
+  --nexus-space-2: calc(4px * 1 * var(--nexus-root));
+  --nexus-space-3: calc(4px * 1.75 * var(--nexus-root));
+  --nexus-space-4: calc(4px * 3 * var(--nexus-root));
+
+  --nexus-radius-sm: calc(4px * var(--nexus-root));
+  --nexus-radius-md: calc(8px * var(--nexus-root));
+  --nexus-radius-lg: calc(14px * var(--nexus-root));
+  --nexus-radius-full: 9999px;
+
+  --nexus-line-thin: 1px;
+  --nexus-line-regular: 2px;
+  --nexus-line-heavy: 3px;
+
+  --nexus-dur-instant: 120ms;
+  --nexus-dur-fast: 180ms;
+  --nexus-dur-base: 240ms;
+  --nexus-dur-slow: 360ms;
+  --nexus-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --nexus-ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --nexus-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --nexus-motion-scale: 1;
+
+  /* WebTools identity palette — v1 */
+  --wt-color-surface: #0d1b2a;
+  --wt-color-surface-raised: #1e293b;
+  --wt-color-surface-sunken: #16243a;
+  --wt-color-ink: #ffffff;
+  --wt-color-ink-muted: #cbd5e1;
+  --wt-color-ink-faint: #94a3b8;
+  --wt-color-accent: #2dd4bf;
+  --wt-color-on-accent: #0d1b2a;
+  --wt-color-line: #334155;
+  --wt-color-line-strong: #475569;
+  --wt-color-shadow: rgba(0, 0, 0, 0.35);
+  --wt-color-overlay: rgba(3, 10, 20, 0.74);
+  --wt-color-danger: #f87171;
+  --wt-color-on-danger: #2b0710;
+  --wt-color-warning: #facc15;
+  --wt-color-on-warning: #231400;
+  --wt-color-success: #4ade80;
+  --wt-color-on-success: #04231a;
+  --wt-color-info: #818cf8;
+
+  /* category identity — v1 */
+  --wt-cat-converters: #2dd4bf;
+  --wt-cat-calculators: #4ade80;
+  --wt-cat-developers: #f472b6;
+  --wt-cat-design: #fb923c;
+  --wt-cat-text: #a78bfa;
+  --wt-cat-network: #60a5fa;
+
+  /* elevation: the tint is the shadow slot */
+  --nexus-elev-1: 0 1px 2px 0 var(--wt-color-shadow);
+  --nexus-elev-2: 0 2px 4px 0 var(--wt-color-shadow);
+  --nexus-elev-3: 0 4px 10px -0px var(--wt-color-shadow);
+  --nexus-elev-4: 0 8px 20px -4px var(--wt-color-shadow);
+
+  --wt-focus-ring: color-mix(in srgb, var(--wt-color-accent) 50%, transparent);
+  --wt-rule-soft: color-mix(in srgb, var(--wt-color-line) 55%, transparent);
+
+  /* typography: the old site's default UI sans */
+  --wt-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --wt-font-mono: var(--font-plex), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nexus-root: 1.04;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nexus-root: 1.07;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --nexus-root: 1.1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --nexus-motion-scale: 0.5;
+    --nexus-dur-instant: 60ms;
+    --nexus-dur-fast: 90ms;
+    --nexus-dur-base: 120ms;
+    --nexus-dur-slow: 180ms;
+  }
+}
